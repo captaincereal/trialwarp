@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: >-
+  If you use trialwarp in your research, please cite the software and the
+  paper that introduced piecewise-linear time warping for neural data.
+title: "trialwarp: time warping to align repeated trials of multi-dimensional time series"
+type: software
+authors:
+  - name: "trialwarp contributors"
+version: 0.1.0
+date-released: "2026-11-14"
+license: MIT
+repository-code: "https://github.com/captaincereal/trialwarp"
+keywords:
+  - time warping
+  - time series alignment
+  - trial alignment
+  - neural data
+  - neuroscience
+references:
+  - type: article
+    title: >-
+      Discovering Precise Temporal Patterns in Large-Scale Neural Recordings
+      through Robust and Interpretable Time Warping
+    authors:
+      - family-names: Williams
+        given-names: Alex H.
+      - family-names: Poole
+        given-names: Ben
+      - family-names: Maheswaranathan
+        given-names: Niru
+      - family-names: Dhawale
+        given-names: Ashesh K.
+      - family-names: Fisher
+        given-names: Tucker
+      - family-names: Wilson
+        given-names: Christopher D.
+      - family-names: Brann
+        given-names: David H.
+      - family-names: Trautmann
+        given-names: Eric M.
+      - family-names: Ryu
+        given-names: Stephen
+      - family-names: Shusterman
+        given-names: Roman
+      - family-names: Rinberg
+        given-names: Dmitry
+      - family-names: Ölveczky
+        given-names: Bence P.
+      - family-names: Shenoy
+        given-names: Krishna V.
+      - family-names: Ganguli
+        given-names: Surya
+    journal: Neuron
+    volume: 105
+    issue: 2
+    start: 246
+    end: 259
+    year: 2020
+    doi: 10.1016/j.neuron.2019.10.020

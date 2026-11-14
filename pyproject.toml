@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trialwarp"
+dynamic = ["version"]
+description = "Align repeated, noisy trials of multi-dimensional time series with shift, linear and piecewise-linear time warping."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "trialwarp contributors" }]
+keywords = [
+    "time warping",
+    "time series alignment",
+    "trial alignment",
+    "template matching",
+    "neural data",
+    "neuroscience",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.8"]
+case-studies = ["matplotlib>=3.8", "h5py>=3.9"]
+
+[project.urls]
+Homepage = "https://github.com/captaincereal/trialwarp"
+Source = "https://github.com/captaincereal/trialwarp"
+Issues = "https://github.com/captaincereal/trialwarp/issues"
+"Case study" = "https://github.com/captaincereal/trialwarp/tree/main/case_studies"
+
+[dependency-groups]
+test = ["pytest>=8"]
+dev = [
+    { include-group = "test" },
+    "ruff>=0.6",
+    "matplotlib>=3.8",
+    "nbformat>=5.9",
+    "nbclient>=0.10",
+    "ipykernel>=6.29",
+]
+
+[tool.hatch.version]
+path = "src/trialwarp/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "examples", "case_studies", "README.md", "LICENSE", "CITATION.cff"]
+exclude = ["examples/figures", "case_studies/figures"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers", "--import-mode=importlib"]
+filterwarnings = [
+    "error",
+    # matplotlib < 3.9 calls pyparsing APIs that pyparsing >= 3.3 deprecates
+    "ignore:'[A-Za-z]+' (argument is )?deprecated:UserWarning",
+]
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY", "SIM", "RUF"]
+ignore = ["RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"examples/*" = ["E402"]
